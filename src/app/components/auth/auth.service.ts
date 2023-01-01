@@ -57,13 +57,13 @@ export const userList: user[] = [
     {
         id: 1,
         fullName: 'Ercan Can',
-        email: 'ercan@gmail.com',
+        email: 'ercancan@gmail.com',
         password: '123',
     },
     {
         id: 2,
         fullName: 'Ferdi Durak',
-        email: 'ferdi@gmail.com',
+        email: 'ferdidurak@gmail.com',
         password: '123',
     },
 ];
