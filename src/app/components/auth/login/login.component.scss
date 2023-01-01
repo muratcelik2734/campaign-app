@@ -13,3 +13,8 @@
         #ff4307,   rgba(33, 150, 243, 0) 30%
     );
 }
+@media (max-width: 768px){
+    .banner-img{
+        display: none;
+    }
+}
