@@ -1,0 +1,28 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="/main/pages/kampanyalar">
+        <img src="assets/logo.svg" alt="logo">
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button">
+            <i class="pi pi-calendar"></i>
+            <span>Calendar</span>
+        </button>
+        <button class="w-8 p-link layout-topbar-button">
+            <b class="mr-4">{{userInfo?.fullName}}</b>
+            <i class="pi pi-user"></i>
+        </button>
+        <button class="p-link layout-topbar-button" (click)="logOut()">
+            <i class="pi pi-power-off"></i>
+            <span>Çıkış Yap</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+
+:host ::ng-deep .pi-eye,
+:host ::ng-deep .pi-eye-slash {
+    transform: scale(1.6);
+    margin-right: 1rem;
+    color: #ff4307;
+}
+.gradient-detail {
+    border-radius: 56px;
+    padding: 0.3rem;
+    background: linear-gradient(
+        180deg,
+        #ff4307,   rgba(33, 150, 243, 0) 30%
+    );
+}

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo ng serve --host 0 --port 5200 --disable-host-check

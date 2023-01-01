@@ -1,0 +1,47 @@
+<div class="grid"  [formGroup]="form">
+    <div class="col-12 md:col-6">
+        <div class="p-fluid">
+            <h5 class="flex align-items-center">
+                <i class="pi pi-arrow-left" style="font-size: 2rem;cursor: pointer;" (click)="back()"></i>
+                <span class="ml-5">Kampanya Oluştur</span>
+            </h5>
+            <div class="field">
+                <label htmlFor="name1">Başlık</label>
+                <input pInputText type="text" formControlName="baslik"
+                [ngClass]="{'ng-dirty': formInvalid('baslik')}"
+                /> <!--ng-dirty formInvalid -->
+            </div>
+            <div class="field">
+                <label>Açıklama</label>
+                <textarea
+                    class="w-full"
+                    pInputText
+                    formControlName="aciklama"
+                    [ngClass]="{'ng-dirty': formInvalid('aciklama')}" 
+                ></textarea>
+            </div>
+            <div class="field">
+                <label>Başlangıç Tarihi</label>
+                <p-calendar
+                    [showIcon]="true"
+                    inputId="icon"
+                    formControlName="baslangic_tarihi"
+                    dateFormat="dd.mm.yy"
+                ></p-calendar>
+            </div>
+            <div class="field">
+                <label>Puanı</label>
+                <p-inputNumber
+                    mode="decimal"
+                    [showButtons]="true"
+                    [min]="0"
+                    formControlName="puan"
+                >
+                </p-inputNumber>
+            </div>
+            <div class="text-center">
+                <button pButton [label]="editData ? 'Güncelle':'Kaydet'" class="w-4" (click)="kampanyaAddOrUpdate()"></button>
+            </div>
+        </div>
+    </div>
+</div>

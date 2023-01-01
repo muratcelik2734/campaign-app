@@ -1,0 +1,93 @@
+<div>
+    <div class="flex align-items-center justify-content-between mb-2">
+        <h3>Kampanya Listesi</h3>
+            <button
+            pButton
+            pRipple
+            type="button"
+            routerLink="/main/pages/kampanya-olustur"
+            *ngIf="kampanyaList?.length > 0"
+        >Yeni Kampanya Oluştur</button>
+    </div>
+    <p-table
+        #dt
+        [value]="kampanyaList"
+        dataKey="id"
+        styleClass="p-datatable-gf p-datatable-striped"
+        [rowHover]="true"
+        [rows]="10"
+        [columns]="cols"
+    >
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <ng-container *ngFor="let col of columns">
+                    <th
+                        [pSortableColumn]="col.field"
+                        [ngClass]="{ 'w-8rem': col.field === 'actions' }"
+                    >
+                        {{ col.header }}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </ng-container>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-columns="columns">
+            <tr>
+                <ng-container *ngFor="let col of columns">
+                    <td [ngClass]="{ flex: col.field === 'actions' }">
+                        <ng-container
+                            *ngIf="col.field === 'actions'; else textField"
+                        >
+                            <button
+                                pButton
+                                pRipple
+                                type="button"
+                                icon="pi pi-file-edit"
+                                class="p-button-rounded p-button-text action-button"
+                                (click)="editKampanya(item)"
+                            ></button>
+                            <button
+                                pButton
+                                pRipple
+                                type="button"
+                                icon="pi pi-times"
+                                class="p-button-rounded p-button-text action-button"
+                                (click)="deleteKampanya(item.id)"
+                            ></button>
+                        </ng-container>
+                        <ng-template #textField>
+                            <span
+                                *ngIf="
+                                    col.field === 'baslangic_tarihi';
+                                    else default
+                                "
+                            >
+                                {{ item[col.field] | date : "dd/MM/yyyy" }}
+                            </span>
+                            <span>
+                                <ng-template #default>
+                                    {{ item[col.field] }}
+                                </ng-template>
+                            </span>
+                        </ng-template>
+                    </td>
+                </ng-container>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8" class="text-center">
+                    Kampanya Bulunamadı
+                    <div class="mt-4">
+                        <button
+                        pButton
+                        pRipple
+                        type="button"
+                        routerLink="/main/pages/kampanya-olustur"
+                    >Yeni Kampanya Oluştur</button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
